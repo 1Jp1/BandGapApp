@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic_6.1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="infoContainer">
+            <div class="generalInfoSection" id="infoArea">
+                <div class="rowInfo">
+                    <div class="rowInfoTitle">
+                        <h4 class="infoTitle">Archive:</h4>
+                    </div>
+                    <div class="file-upload-container">
+                        <label for="input-archive" class="custom-file-label">Select File</label>
+                        <input type="file" id="input-archive" accept=".csv">
+                        <span id="file-name">Select Any File</span>
+                    </div>
+                </div>
+
+                <div class="thirdRowSection" id = "hiddenBandGapInput">
+                    <div class="bandGapRow">
+                        <div class="bandGapLabel">
+                            <div>Band Gap:</div>
+                        </div>
+                        <div class="bandGapSection">
+                            <input type="number" class="inputBandGap" id="lower-bandGap" step="0.01" >
+
+                            <div class="textBandGap">
+                                <p class="energyText">&lt; Energy &lt;</p>
+                            </div>
+
+                            <input type="number" class="inputBandGap" id="upper-bandGap" step="0.01" >
+                        </div>
+                    </div>
+                    
+                    <!-- <div>
+                        
+                    </div> -->
+                    
+
+                </div>
+                
+                <div class="secondRowSection">
+
+                    <div>
+                        <div class="rowInfoTitle">
+                            <h4 class="infoTitle">Charts:</h4>
+                        </div>
+                        <select id="options-select">
+                            <option value="1">Original</option>
+                            <option value="2">Grafica Normalizada</option>
+                            <option value="3">Band Gap</option>
+
+                        </select>
+                        
+                    </div>
+                    <div class="selectSection">
+                        <div>
+                            <select name="" id="headers-option">
+                                
+                            </select>
+                        </div>
+                        <button id="calcButton">Graph</button>
+                    </div>
+                    
+                </div>
+
+
+                
+                
+            </div>
+            <div class="connectionsSection">
+                
+            </div>
+        </div>
+        <div class="representationContainer" id="grafica-container">
+
+            
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='/script.js')}}"></script>
+</body>
+</html>

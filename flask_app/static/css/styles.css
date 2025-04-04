@@ -1,0 +1,438 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Asegura tipografía profesional */
+}
+
+.mainContainer {
+    background: #F8FAFC; /* Fondo claro */
+    position: absolute;
+    border: solid 3px #D1D5DB; /* Borde sutil */
+    top: 15%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    display: flex;
+    overflow: hidden; /*esto es tempora;*/
+}
+
+.infoContainer {
+    background: #FFFFFF; /* Fondo blanco para el contenedor principal */
+    flex: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.generalInfoSection {
+    background: #E5E7EB; /* Fondo gris claro */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D1D5DB; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 15px;
+}
+
+.rowInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px; /* Espacio entre filas */
+}
+
+.rowInfo * {
+    font-size: 3vh;
+    flex: 1;
+}
+
+.rowInfoTitle {
+    flex: 1;
+    background: #F97316; /* Naranja industrial */
+    color: white;
+    text-align: end;
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+.file-upload-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    border: #F97316 solid 1px; /* Naranja industrial */
+    
+}
+
+#input-archive {
+    display: none; /* Oculta el input original */
+    width: 100%;
+    flex: 1;
+}
+
+.custom-file-label {
+    border-bottom: #F97316 solid 1px; /* Naranja industrial */
+    background: #ffc59b ;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    /* border-radius: 5px; */
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: start;
+    min-width: 180px;
+    width: 100%;
+    flex: 3;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.custom-file-label:hover {
+    background: #1D4ED8; /* Azul oscuro al pasar el mouse */
+}
+
+#file-name {
+    font-size: 16px;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* Ajusta según el espacio disponible */
+    flex: 1;
+    
+}
+
+/* Este de abajo es para pantallas menores */
+@media (max-width: 600px) {
+    #file-name {
+        font-size: 12px; /* Ajusta el tamaño de la fuente */
+        max-width: 150px; /* Reduce el ancho máximo */
+    }
+}
+
+
+.calcButtonSection {
+    display: flex;
+    flex-direction: column;
+    background:#E5E7EB ;
+    align-items: flex-end; /* Centra los elementos horizontalmente */
+    justify-content: flex-end;
+    height: 100%;
+    padding: 10px;
+}
+
+
+
+/* Efecto cuando se hace clic */
+#calcButton:active {
+    animation: clickEffect 0.2s ease;
+}
+
+@keyframes clickEffect {
+    0% {
+        transform: scale(1);
+        background-color: lightblue;
+    }
+    50% {
+        transform: scale(0.9);
+        background-color: deepskyblue;
+    }
+    100% {
+        transform: scale(1);
+        background-color: lightblue;
+    }
+}
+
+
+
+.connectionsSection {
+    background: #F9FAFB; /* Verde claro para la sección de conexiones */
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    
+    gap: 5px; /* Añadido espacio entre las secciones */
+    box-sizing: border-box;
+    overflow: hidden; /*Este es importante por quo es la referencia, probar poniendo*/ 
+}
+
+
+
+.representationContainer {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px; /* Tamaño de las celdas de la cuadrícula */
+    flex: 7;
+    width: 1000px;
+    overflow: auto; /* Permite el desplazamiento */
+    max-height: 100%; /* Limita la altura máxima */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el contenido */
+    justify-content: flex-start; /* Alinea los elementos en la parte superior */
+    padding-bottom: 200px; /* Añade espacio adicional al final */
+}
+
+.canvasMainContainer {
+    width: 100%;
+    padding-top: 20%; /* Ajusta la altura del contenedor para dejar un espacio arriba */
+    padding-bottom: 200px; /* Espacio extra en la parte inferior */
+    box-sizing: border-box; /* Asegura que los paddings no afecten al tamaño total */
+    display: flex;
+    flex-direction: column; /* Asegura que los platos se apilen verticalmente */
+    align-items: center; /* Centra los platos horizontalmente */
+}
+
+
+.plate{
+    min-height: 60px;
+    width: 120px;
+    border: solid 1px black;
+}
+
+
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .representationContainer {
+        order: 2; /* Lo mueve abajo */
+        height: auto;
+        max-height: 50vh; /* Ajusta la altura para que no ocupe toda la pantalla */
+        width: 100%;
+    }
+
+    .infoContainer {
+        order: 1; /* Se mantiene arriba */
+        height: auto;
+        width: 100%;
+    }
+}
+
+
+.secondRowSection{
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Espacio entre filas */
+}
+
+.secondRowSection >:first-child{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.secondRowSection >:first-child > :first-child{
+    padding-top: 5px;
+}
+.secondRowSection >:first-child > *{
+    flex: 1;
+    box-sizing: border-box;
+
+}
+
+.thirdRowSection{
+    flex: .5;
+    
+    /* display: flex; */
+    flex-direction: column;
+    margin-bottom: 15px; /* Espacio entre filas */
+
+    
+    
+
+    
+}
+
+.bandGapRow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    
+
+    box-sizing: border-box;
+    
+
+    flex: 1;
+}
+
+/* Estilo del label "Band Gap:" */
+.bandGapLabel {
+    flex: 2; /* Ocupa el 33.33% */
+    font-weight: bold;
+
+    text-align: left;
+    
+    color: white;
+    display: flex;
+    justify-content: end;
+    background: #F97316 ;
+    height: 100%;
+    align-items: center;
+    min-height: 57px;
+}
+
+/* Contenedor de los inputs y texto */
+.bandGapSection {
+    flex: 5; /* Ocupa el 66.67% */
+    display: flex;
+    align-items: center;
+    
+
+    
+    height: 100%;
+}
+
+/* Inputs */
+.inputBandGap {
+    flex: 2;
+    width: 100%;
+    min-width: 60px; /* Evita que los inputs sean demasiado pequeños */
+    
+    border: 1px solid black;
+    text-align: center;
+
+    height: 100%;
+    box-sizing: border-box;
+
+    min-height: 57px;
+    
+}
+
+.textBandGap{
+    flex: 3;
+    text-align: center;
+    color: white;
+    background: #F97316;
+    padding: 5px;
+    min-width: 60px; /* Para evitar que se colapse en pantallas pequeñas */
+    font-size: 15px;
+    height: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    
+}
+
+/* Texto "< Energy <" */
+.energyText {
+
+}
+
+
+
+.thirdRowSection >:last-child{
+    flex: 5;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+
+.selectSection{
+    flex: 1;
+    align-items: start;
+    display: flex;
+    
+    padding: 0%;
+    box-sizing: border-box;
+    border: 0px;
+    margin: 0%;
+    
+    justify-content: end;
+    align-items: end;
+
+
+
+    padding-top: 10px;
+    
+}
+
+.selectSection >:first-child{
+    flex: 1;
+    background-color:brown ;
+    height: 100%;
+}
+
+#headers-option {
+    height: 100%;
+    width: 100%;
+    
+}
+
+/* .selectSection >:last-child{
+    flex: 1;
+} */
+
+
+#calcButton {
+    flex: 0.5;
+    max-width: 25%; /* Evita que crezca más allá del 50% */
+    margin: 1px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    color: white;
+    
+    background: #F97316; /* Naranja industrial */
+    border: none;
+    
+    
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background 0.3s;
+    
+}
+
+#calcButton:hover {
+    background: #1D4ED8; /* Efecto hover azul oscuro */
+}
+
+
+
+
+/* Contenedor de representación */
+.representationContainer {
+    position: relative;
+    
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px; /* Tamaño de las celdas de la cuadrícula */
+    flex: 7;
+    width: 100%;
+    overflow: hidden; /* Permite el desplazamiento */
+    background-color: beige;
+    display: flex;
+    height: 70vh;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el contenido */
+    justify-content: flex-start; /* Alinea los elementos en la parte superior */
+    /* overflow-y: scroll; */
+    
+}
+
+
+.img-graph{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;/*A mi punto de vista se ve mejor contain pero pues puedo mejorar el aspecto despues*/
+
+}
+
+#hiddenBandGapInput{
+    display: none;
+}
